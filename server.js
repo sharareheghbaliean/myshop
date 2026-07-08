@@ -3,18 +3,20 @@ const app = express();
 
 app.use(express.json());
 
+
 const sequelize = require('./config/database');
 
 // وصل کردن روت‌ها
 const productRoutes = require('./routes/productRoutes');
 app.use('/products', productRoutes);
 
+/*
 const categoryRoutes = require('./routes/categoryRoutes');
 app.use('/categories', categoryRoutes);
 
 const orderRoutes = require('./routes/orderRoutes');
 app.use('/orders', orderRoutes);
-
+*/
 const userRoutes = require('./routes/userRoutes');
 app.use('/users', userRoutes);
 

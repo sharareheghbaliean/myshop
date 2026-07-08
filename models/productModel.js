@@ -22,7 +22,7 @@ const Product = sequelize.define('Product', {
     type: DataTypes.FLOAT,
     allowNull: false
   },
-  quantity: {
+  stock: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
