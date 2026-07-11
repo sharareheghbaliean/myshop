@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Category = require('./categoryModel');
 /*
 CREATE TABLE products (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,10 +27,22 @@ const Product = sequelize.define('Product', {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0
+  },
+  categoryId: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+    references: {
+      model: Category,
+      key: 'id'
+    }
   }
 }, {
   tableName: 'products',
   timestamps: false
 });
+
+// تعریف ارتباط در اینجا
+Category.hasMany(Product, { foreignKey: 'categoryId' });
+Product.belongsTo(Category, { foreignKey: 'categoryId' });
 
 module.exports = Product;
